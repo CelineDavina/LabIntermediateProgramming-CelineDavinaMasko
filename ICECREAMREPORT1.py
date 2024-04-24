@@ -19,14 +19,13 @@ while True :
 print(sales_data, "\n\n")
 
 sum_per_day = []
-# for i in sales_data:
-#     print(d[0])
+total_per_day = []
 
 for key, value in sales_data.items():
     value1, value2, value3, value4 = value
     sum_per_day.append(value1)
     modif_list2 = [eval(i) for i in sum_per_day]
-    sum_per_day.append(sum(modif_list2))
+    total_per_day.append(sum(modif_list2))
 
 
 # 4. print in a report

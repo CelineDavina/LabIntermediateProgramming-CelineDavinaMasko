@@ -1,0 +1,131 @@
+File I/O
+We can use file as method of input or output in the program
+Example : text files (.txt)
+With files, data can be saved permanently (not only exists during running time)
+    File operation
+    Open
+    Read 
+    Write
+    Close
+
+# store the returned file object in variables 
+infile = open("input.txt","r")
+outfile = open("output.txt","w")
+# r for reading (input)
+# w for writing(output)
+
+# read data from inflie
+# write data from outfile
+infile.close()
+outfile.close()
+
+# Opening Files: Reading
+To access a file, you must first open it
+Suppose you want to read data from a file named input.txt, located in the same directory as the program
+To open a file for reading, you must provide the name of the file as the first argument to the open function and the string "r" as the second argument:
+# infile = open("input.txt", "r")
+
+Important things to keep in mind:
+When opening a file for reading, the file must exist (and otherwise be accessible) or an exception occurs
+The file object returned by the open function must be saved in a variable
+    All operations for accessing a file are made via the file object
+
+# Opening Files: Writing
+To open a file for writing, you provide the name of the file as the first argument to the open function and the string "w" as the second argument:
+# outfile = open("output.txt", "w")
+If the output file already exists, it is emptied before the new data is written into it
+If the file does not exist, an empty file is created
+
+# pening Files: append new data (writing)
+To open a file for writing, you provide the name of the file as the first argument to the open function and the string "w" as the second argument:
+# outfile = open("output.txt", “a+")
+If the output file already exists, it is emptied before the new data is written into it
+If the file does not exist, an empty file is created
+
+# Closing Files: Important
+When you are done processing a file, be sure to close the file using the close() method:
+If your program exits without closing a file that was opened for writing, some of the output may not be written to the disk file
+
+# Reading From a File
+To read a line of text from a file, call the readline() method with the file object that was returned when you opened the file:
+# line = infile.readline()
+When a file is opened, an input marker is positioned at the beginning of the file 
+The readline() method reads the text, starting at the current position and continuing until the end of the line is encountered 
+    The input marker is then moved to the next line
+
+For example, suppose input.txt contains the lines
+  flying  circus 
+  55 (akan dibaca sebagai string atau sebagai int?)
+  clown  animal
+  acrobatic
+The first call to readline() returns the string "flying\n"
+Recall that \n denotes the newline character that indicates the end of the line 
+If you call readline() a second time, it returns the string "circus\n" 
+
+Calling readline() again yields the empty string "" because you have reached the end of the file
+If the file contains a blank line, then readline() returns a string containing only the newline character "\n“
+
+Sentinel value -> while -> to know when to stop the looping
+
+# Reading Multiple Lines From a File
+You repeatedly read a line of text and process it until the sentinel value is reached:
+The sentinel value is an empty string, which is returned by the readline() method after the end of file has been reached
+
+line = infile.readline()
+while line != "" :
+    # Process the line.
+    line = infile.readline()
+
+# Converting File Input
+As with the input function, the readline() method can only return strings 
+If the file contains numerical data, the strings must be converted to the numerical value using the int() or float() function:
+
+# value = float(line)   ; value = int(line) ; line adalah variable tempat kita menyimpan data per baris
+
+The newline character at the end of the line is ignored when the string is converted to a numerical value
+
+# Writing To A File
+outfile.write("Hello, World!\n")
+outfile.write("Number of entries: %d\nTotal: %8.2f\n" 
+  % (count, total))
+
+score = [45.2, 64.5, 100, 76.8]
+filename = input("Enter file name")
+
+fd = open(filename,"w")
+
+#Input values to file
+for i in range(len(score)):
+    fd.write("%1.2f\n" %score[i]); #typecast from float to string
+
+fd.close()
+
+
+fd = open(“names.txt","r")
+
+#Input values to file
+line = fd.readline()
+while line != "":
+    print(line)
+    line = fd.readline()
+
+fd.close()
+
+
+fd = open("C:\\Users\\User\\Desktop\\script_Python\\names.txt","a+")
+#Input values to file
+line = fd.readline()
+while line != "":
+    print(line)
+    line = fd.readline()
+fd.close()
+
+
+score = [45.2, 64.5, 100, 76.8]
+filename = input("Enter file name")
+fd = open(filename,"w")
+# Input values to file
+for i in range(len(score)):
+    fd.write("%1.2f\n" %score[i]); #typecast from float to string
+
+fd.close()

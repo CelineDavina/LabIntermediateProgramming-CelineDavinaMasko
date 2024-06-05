@@ -28,6 +28,7 @@ num_accounts = 5
 accounts = []
 for _ in range(num_accounts):
     account = BankAccount()
+    accounts.append(account)        
     print(account)  
 
 
